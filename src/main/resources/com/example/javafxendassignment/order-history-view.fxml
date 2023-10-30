@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="698.0"
+            prefWidth="891.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.javafxendassignment.controllers.OrderHistoryController">
+    <Label layoutX="26.0" layoutY="14.0" prefHeight="42.0" prefWidth="244.0" text="Order history">
+        <font>
+            <Font name="Segoe UI" size="25.0"/>
+        </font>
+    </Label>
+    <TableView fx:id="orderHistoryTableView" layoutX="26.0" layoutY="56.0" prefHeight="288.0" prefWidth="839.0"
+               style="-fx-background-color: #adc095;" AnchorPane.leftAnchor="26.0" AnchorPane.rightAnchor="26.0"
+               AnchorPane.topAnchor="56.0">
+        <columns>
+            <TableColumn fx:id="orderDateTimeTableColumn" editable="false" prefWidth="221.0" text="Date/time"/>
+            <TableColumn fx:id="orderNameTableColumn" editable="false" prefWidth="354.0" text="Name"/>
+            <TableColumn fx:id="orderTotalPriceTableColumn" prefWidth="263.0" text="Total price"/>
+        </columns>
+    </TableView>
+    <Label layoutX="26.0" layoutY="349.0" prefHeight="42.0" prefWidth="244.0" text="Ordered products">
+        <font>
+            <Font name="Segoe UI" size="25.0"/>
+        </font>
+    </Label>
+    <TableView fx:id="orderedProductsTableView" layoutX="26.0" layoutY="391.0" prefHeight="288.0" prefWidth="839.0"
+               style="-fx-background-color: #adc095;">
+        <columns>
+            <TableColumn fx:id="productQuantityTableColumn" editable="false" prefWidth="77.0" text="Quantity"/>
+            <TableColumn fx:id="productNameTableColumn" editable="false" prefWidth="380.0" text="Name"/>
+            <TableColumn fx:id="productCategoryTableColumn" editable="false" prefWidth="246.0" text="Category"/>
+            <TableColumn fx:id="productPriceTableColumn" editable="false" prefWidth="135.0" text="Price"/>
+        </columns>
+    </TableView>
+</AnchorPane>

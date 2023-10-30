@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0"
+            prefWidth="1120.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.javafxendassignment.controllers.MainWindowController">
+    <SplitPane dividerPositions="0.2" prefHeight="700.0" prefWidth="1120.0">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="698.0" prefWidth="214.0"
+                    style="-fx-background-color: #7a9a51;">
+            <Button fx:id="productInventoryButton" layoutX="25.0" layoutY="166.0" mnemonicParsing="false"
+                    onMouseClicked="#openProductInventoryButton" prefHeight="49.0" prefWidth="170.0"
+                    style="-fx-background-color: #ccd9be;" text="Product inventory" wrapText="true">
+                <font>
+                    <Font name="Segoe UI Bold" size="15.0"/>
+                </font>
+            </Button>
+            <Button fx:id="orderHistoryButton" layoutX="25.0" layoutY="238.0" mnemonicParsing="false"
+                    onMouseClicked="#openOrderHistoryButton" prefHeight="49.0" prefWidth="170.0"
+                    style="-fx-background-color: #ccd9be;" text="Order history" wrapText="true">
+                <font>
+                    <Font name="Segoe UI Bold" size="15.0"/>
+                </font>
+            </Button>
+            <Button fx:id="createOrderButton" layoutX="25.0" layoutY="96.0" mnemonicParsing="false"
+                    onMouseClicked="#openCreateOrderButton" prefHeight="49.0" prefWidth="170.0"
+                    style="-fx-background-color: #ccd9be;" text="Create order" wrapText="true">
+                <font>
+                    <Font name="Segoe UI Bold" size="15.0"/>
+                </font>
+            </Button>
+            <Button fx:id="dashboardButton" layoutX="25.0" layoutY="28.0" mnemonicParsing="false"
+                    onMouseClicked="#openDashboardButton" prefHeight="49.0" prefWidth="170.0"
+                    style="-fx-background-color: #adc095;" text="Dashboard" wrapText="true">
+                <font>
+                    <Font name="Segoe UI Bold" size="15.0"/>
+                </font>
+            </Button>
+            <Button fx:id="logoutButton" layoutX="26.0" layoutY="640.0" mnemonicParsing="false"
+                    onMouseClicked="#onClickLogoutButton" prefHeight="31.0" prefWidth="170.0"
+                    style="-fx-background-color: #ccd9be;" text="Logout" wrapText="true">
+                <font>
+                    <Font name="Segoe UI Bold" size="15.0"/>
+                </font>
+            </Button>
+        </AnchorPane>
+        <AnchorPane fx:id="contentPane" minHeight="0.0" minWidth="0.0" prefHeight="698.0" prefWidth="891.0"/>
+    </SplitPane>
+</AnchorPane>

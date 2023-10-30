@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.*?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="698.0"
+            prefWidth="891.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.javafxendassignment.controllers.CreateOrderController">
+    <Label layoutX="26.0" layoutY="14.0" prefHeight="42.0" prefWidth="244.0" text="Create Order">
+        <font>
+            <Font name="Segoe UI" size="25.0"/>
+        </font>
+    </Label>
+    <Label layoutX="26.0" layoutY="50.0" prefHeight="29.0" prefWidth="244.0" text="Customer Information">
+        <font>
+            <Font name="Segoe UI" size="20.0"/>
+        </font>
+    </Label>
+    <Label layoutX="26.0" layoutY="79.0" prefHeight="31.0" prefWidth="141.0" text="First name:">
+        <font>
+            <Font name="Segoe UI" size="16.0"/>
+        </font>
+    </Label>
+    <Label layoutX="26.0" layoutY="113.0" prefHeight="31.0" prefWidth="141.0" text="Last name:">
+        <font>
+            <Font name="Segoe UI" size="16.0"/>
+        </font>
+    </Label>
+    <Label layoutX="26.0" layoutY="150.0" prefHeight="31.0" prefWidth="141.0" text="E-mail address:">
+        <font>
+            <Font name="Segoe UI" size="16.0"/>
+        </font>
+    </Label>
+    <Label layoutX="26.0" layoutY="188.0" prefHeight="31.0" prefWidth="141.0" text="Phone number:">
+        <font>
+            <Font name="Segoe UI" size="16.0"/>
+        </font>
+    </Label>
+    <TextField fx:id="firstNameTextField" layoutX="148.0" layoutY="80.0" prefHeight="29.0" prefWidth="244.0"
+               promptText="First name">
+        <font>
+            <Font name="Segoe UI" size="16.0"/>
+        </font>
+    </TextField>
+    <TextField fx:id="lastNameTextField" layoutX="148.0" layoutY="117.0" prefHeight="29.0" prefWidth="244.0"
+               promptText="Last name">
+        <font>
+            <Font name="Segoe UI" size="16.0"/>
+        </font>
+    </TextField>
+    <TextField fx:id="emailAddressTextField" layoutX="148.0" layoutY="154.0" prefHeight="29.0" prefWidth="244.0"
+               promptText="\@domain.com">
+        <font>
+            <Font name="Segoe UI" size="16.0"/>
+        </font>
+    </TextField>
+    <TextField fx:id="phoneNumberTextField" layoutX="148.0" layoutY="192.0" prefHeight="29.0" prefWidth="244.0"
+               promptText="Must start with '06'">
+        <font>
+            <Font name="Segoe UI" size="16.0"/>
+        </font>
+    </TextField>
+    <Label layoutX="26.0" layoutY="221.0" prefHeight="31.0" prefWidth="244.0" text="Products">
+        <font>
+            <Font name="Segoe UI" size="20.0"/>
+        </font>
+    </Label>
+    <TableView fx:id="orderListProductsTableView" layoutX="26.0" layoutY="252.0" prefHeight="388.0" prefWidth="836.0"
+               style="-fx-background-color: #adc095;" AnchorPane.leftAnchor="26.0" AnchorPane.rightAnchor="26.0"
+               AnchorPane.topAnchor="252.0">
+        <columns>
+            <TableColumn fx:id="quantityTableColumn" editable="false" prefWidth="77.0" text="Quantity"/>
+            <TableColumn fx:id="nameTableColumn" editable="false" prefWidth="380.0" text="Name"/>
+            <TableColumn fx:id="categoryTableColumn" editable="false" prefWidth="246.0" text="Category"/>
+            <TableColumn fx:id="priceTableColumn" editable="false" prefWidth="135.0" text="Price"/>
+        </columns>
+    </TableView>
+    <Button fx:id="addProductButton" layoutX="26.0" layoutY="653.0" mnemonicParsing="false"
+            onMouseClicked="#clickAddProductButton" prefHeight="31.0" prefWidth="141.0"
+            style="-fx-background-color: #adc095;" text="Add product" wrapText="true">
+        <font>
+            <Font name="Segoe UI" size="15.0"/>
+        </font>
+    </Button>
+    <Button fx:id="deleteProductButton" layoutX="177.0" layoutY="653.0" mnemonicParsing="false"
+            onMouseClicked="#clickDeleteProductButton" prefHeight="31.0" prefWidth="141.0"
+            style="-fx-background-color: #adc095;" text="Delete product" wrapText="true">
+        <font>
+            <Font name="Segoe UI" size="15.0"/>
+        </font>
+    </Button>
+    <Button fx:id="createNewOrderButton" layoutX="327.0" layoutY="653.0" mnemonicParsing="false"
+            onMouseClicked="#clickCreateNewOrderButton" prefHeight="31.0" prefWidth="141.0"
+            style="-fx-background-color: #adc095;" text="Create order" wrapText="true">
+        <font>
+            <Font name="Segoe UI" size="15.0"/>
+        </font>
+    </Button>
+    <Label fx:id="productNotSelectedErrorMessage" alignment="CENTER" layoutX="478.0" layoutY="653.0" prefHeight="31.0"
+           prefWidth="388.0" text="Please selected a product to delete!" textFill="RED" visible="false">
+        <font>
+            <Font name="Segoe UI" size="18.0"/>
+        </font>
+    </Label>
+    <Label fx:id="noProductAddedErrorMessage" alignment="CENTER" layoutX="478.0" layoutY="653.0" prefHeight="31.0"
+           prefWidth="388.0" text="Please add at least one product!" textFill="RED" visible="false">
+        <font>
+            <Font name="Segoe UI" size="18.0"/>
+        </font>
+    </Label>
+    <Label fx:id="noProductToDeleteErrorMessage" alignment="CENTER" layoutX="478.0" layoutY="653.0" prefHeight="31.0"
+           prefWidth="388.0" text="No products to delete!" textFill="RED" visible="false">
+        <font>
+            <Font name="Segoe UI" size="18.0"/>
+        </font>
+    </Label>
+    <Label fx:id="notAllFieldsFilledErrorMessage" alignment="CENTER" layoutX="478.0" layoutY="653.0" prefHeight="31.0"
+           prefWidth="388.0" text="Please fill in all the fields!" textFill="RED" visible="false">
+        <font>
+            <Font name="Segoe UI" size="18.0"/>
+        </font>
+    </Label>
+    <Label fx:id="emailInputNotValidErrorMessage" alignment="CENTER" layoutX="478.0" layoutY="653.0" prefHeight="31.0"
+           prefWidth="388.0" text="Please enter a valid email address!" textFill="RED" visible="false">
+        <font>
+            <Font name="Segoe UI" size="18.0"/>
+        </font>
+    </Label>
+    <Label fx:id="phoneNumberNotValidErrorMessage" alignment="CENTER" layoutX="478.0" layoutY="653.0" prefHeight="31.0"
+           prefWidth="388.0" text="Please enter a valid phone number (starts 06)!" textFill="RED" visible="false">
+        <font>
+            <Font name="Segoe UI" size="18.0"/>
+        </font>
+    </Label>
+    <Label fx:id="orderCreatedSuccessfullyMessage" alignment="CENTER" layoutX="478.0" layoutY="653.0" prefHeight="31.0"
+           prefWidth="388.0" text="Order created successfully!" textFill="#2f721d" visible="false">
+        <font>
+            <Font name="Segoe UI" size="18.0"/>
+        </font>
+    </Label>
+</AnchorPane>

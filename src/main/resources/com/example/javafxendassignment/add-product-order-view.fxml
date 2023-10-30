@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.javafxendassignment.controllers.AddProductOrderController">
+    <Label layoutX="26.0" layoutY="14.0" prefHeight="42.0" prefWidth="244.0" text="Select product">
+        <font>
+            <Font name="Segoe UI" size="25.0" />
+        </font>
+    </Label>
+    <TableView fx:id="productsTableView" layoutX="22.0" layoutY="97.0" prefHeight="199.0" prefWidth="759.0" style="-fx-background-color: #adc095;">
+        <columns>
+            <TableColumn fx:id="stockTableColumn" editable="false" prefWidth="56.0" text="Stock" />
+            <TableColumn fx:id="nameTableColumn" editable="false" prefWidth="234.0" text="Name" />
+            <TableColumn fx:id="categoryTableColumn" editable="false" prefWidth="148.0" text="Category" />
+            <TableColumn fx:id="priceTableColumn" editable="false" prefWidth="74.0" text="Price" />
+            <TableColumn fx:id="descriptionTableColumn" editable="false" prefWidth="246.0" text="Description" />
+        </columns>
+    </TableView>
+    <Label layoutX="22.0" layoutY="309.0" prefHeight="31.0" prefWidth="79.0" text="Quantity: ">
+        <font>
+            <Font name="Segoe UI" size="18.0" />
+        </font>
+    </Label>
+    <TextField fx:id="quantityTextField" layoutX="128.0" layoutY="310.0" prefHeight="29.0" prefWidth="116.0">
+        <font>
+            <Font name="Segoe UI" size="16.0" />
+        </font>
+    </TextField>
+    <Button fx:id="addToOrderButton" layoutX="22.0" layoutY="355.0" mnemonicParsing="false" onMouseClicked="#clickAddToOrderButton" prefHeight="31.0" prefWidth="141.0" style="-fx-background-color: #adc095;" text="Add to order" wrapText="true">
+        <font>
+            <Font name="Segoe UI" size="15.0" />
+        </font>
+    </Button>
+    <Button fx:id="cancelButton" layoutX="186.0" layoutY="355.0" mnemonicParsing="false" onMouseClicked="#clickCloseButton" prefHeight="31.0" prefWidth="141.0" style="-fx-background-color: #adc095;" text="Cancel" wrapText="true">
+        <font>
+            <Font name="Segoe UI" size="15.0" />
+        </font>
+    </Button>
+    <Label fx:id="productSuccessfullyAddedMessage" alignment="CENTER" layoutX="352.0" layoutY="355.0" prefHeight="31.0" prefWidth="438.0" text="Product added to the order list successfully!" textFill="#2f721d" visible="false">
+        <font>
+            <Font name="Segoe UI" size="18.0" />
+        </font>
+    </Label>
+    <Label fx:id="noProductSelectedErrorMessage" alignment="CENTER" layoutX="352.0" layoutY="355.0" prefHeight="31.0" prefWidth="438.0" text="Please select a product to add!" textFill="RED" visible="false">
+        <font>
+            <Font name="Segoe UI" size="18.0" />
+        </font>
+    </Label>
+    <Label fx:id="quantityHigherThanStockErrorMessage" alignment="CENTER" layoutX="352.0" layoutY="355.0" prefHeight="31.0" prefWidth="438.0" text="Quantity can't be higher than stock of the product!" textFill="RED" visible="false">
+        <font>
+            <Font name="Segoe UI" size="18.0" />
+        </font>
+    </Label>
+    <Label fx:id="quantityEmptyMessage" alignment="CENTER" layoutX="352.0" layoutY="355.0" prefHeight="31.0" prefWidth="438.0" text="Please fill out the quantity field!" textFill="RED" visible="false">
+        <font>
+            <Font name="Segoe UI" size="18.0" />
+        </font>
+    </Label>
+    <Label fx:id="quantityIncorrectErrorMessage" alignment="CENTER" layoutX="352.0" layoutY="355.0" prefHeight="31.0" prefWidth="438.0" text="Quantity input is incorrect!" textFill="RED" visible="false">
+        <font>
+            <Font name="Segoe UI" size="18.0" />
+        </font>
+    </Label>
+   <Label layoutX="26.0" layoutY="56.0" prefHeight="31.0" prefWidth="79.0" text="Search:">
+      <font>
+         <Font name="Segoe UI" size="18.0" />
+      </font>
+   </Label>
+   <TextField fx:id="filterProductsTextField" layoutX="132.0" layoutY="57.0" prefHeight="30.0" prefWidth="252.0">
+      <font>
+         <Font name="Segoe UI" size="16.0" />
+      </font>
+   </TextField>
+</AnchorPane>
