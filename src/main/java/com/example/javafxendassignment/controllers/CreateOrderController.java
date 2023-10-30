@@ -134,8 +134,7 @@ public class CreateOrderController {
             showMessage(notAllFieldsFilledErrorMessage);
         } else if (!emailAddressTextField.getText().contains("@") || !emailAddressTextField.getText().contains(".")) {
             showMessage(emailInputNotValidErrorMessage);
-        } else if (!phoneNumberTextField.getText().matches("/d+") || phoneNumberTextField.getText().length() != 10 ||
-                !phoneNumberTextField.getText().startsWith("06")) {
+        } else if (!phoneNumberTextField.getText().matches("[0-9]+") || !phoneNumberTextField.getText().startsWith("06")) {
             showMessage(phoneNumberNotValidErrorMessage);
         } else {
             return true;

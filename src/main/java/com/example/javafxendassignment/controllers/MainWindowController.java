@@ -75,7 +75,8 @@ public class MainWindowController {
             if (alert.getResult() == ButtonType.YES) {
                 ((Node) (mouseEvent.getSource())).getScene().getWindow().hide();
                 fileService.saveDatabase();
-            } else {
+            } else if (alert.getResult() == ButtonType.NO) {
+                event.consume();
                 alert.close();
             }
         });

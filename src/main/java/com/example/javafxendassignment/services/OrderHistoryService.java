@@ -10,7 +10,7 @@ import java.util.List;
 
 public class OrderHistoryService {
 
-    public DatabaseAccess database;
+    private DatabaseAccess database = null;
 
     public OrderHistoryService() {
         database = DatabaseSharedModel.getDatabase();
