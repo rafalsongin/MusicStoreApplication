@@ -1,9 +1,5 @@
 # Java Fundamentals End assignment
 
-### Creator
-
-Rafal Songin (697248)
-
 ### Description
 
 Music products store project, done along with learning Java Fundamentals. 
