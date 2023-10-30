@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
+
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="698.0"
-            prefWidth="891.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1"
+            prefWidth="891.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="com.example.javafxendassignment.controllers.ProductInventoryController">
     <TableView fx:id="productsTableView" layoutX="24.0" layoutY="56.0" prefHeight="574.0" prefWidth="844.0"
                style="-fx-background-color: #adc095;" AnchorPane.leftAnchor="24.0">
@@ -22,36 +23,43 @@
         </font>
     </Label>
     <Button fx:id="addProductButton" layoutX="26.0" layoutY="653.0" mnemonicParsing="false"
-            onMouseClicked="#clickAddProductButton" prefHeight="31.0" prefWidth="141.0"
+            onMouseClicked="#clickAddProductButton" prefHeight="31.0" prefWidth="130.0"
             style="-fx-background-color: #adc095;" text="Add product" wrapText="true">
         <font>
             <Font name="Segoe UI" size="15.0"/>
         </font>
     </Button>
-    <Button fx:id="editProductButton" layoutX="177.0" layoutY="653.0" mnemonicParsing="false"
-            onMouseClicked="#clickEditProductButton" prefHeight="31.0" prefWidth="141.0"
+    <Button fx:id="editProductButton" layoutX="164.0" layoutY="653.0" mnemonicParsing="false"
+            onMouseClicked="#clickEditProductButton" prefHeight="31.0" prefWidth="130.0"
             style="-fx-background-color: #adc095;" text="Edit product" wrapText="true">
         <font>
             <Font name="Segoe UI" size="15.0"/>
         </font>
     </Button>
-    <Button fx:id="deleteProductButton" layoutX="327.0" layoutY="653.0" mnemonicParsing="false"
-            onMouseClicked="#clickDeleteProductButton" prefHeight="31.0" prefWidth="141.0"
+    <Button fx:id="deleteProductButton" layoutX="303.0" layoutY="653.0" mnemonicParsing="false"
+            onMouseClicked="#clickDeleteProductButton" prefHeight="31.0" prefWidth="130.0"
             style="-fx-background-color: #adc095;" text="Delete product" wrapText="true">
         <font>
             <Font name="Segoe UI" size="15.0"/>
         </font>
     </Button>
-    <Label fx:id="noProductSelectedErrorMessage" alignment="CENTER" layoutX="478.0" layoutY="653.0" prefHeight="31.0"
-           prefWidth="388.0" text="Please selected a product!" textFill="RED" visible="false">
+    <Label fx:id="noProductSelectedErrorMessage" alignment="CENTER" layoutX="579.0" layoutY="653.0" prefHeight="31.0"
+           prefWidth="304.0" text="Please selected a product!" textFill="RED" visible="false">
         <font>
             <Font name="Segoe UI" size="18.0"/>
         </font>
     </Label>
-    <Label fx:id="noProductAddedErrorMessage" alignment="CENTER" layoutX="478.0" layoutY="653.0" prefHeight="31.0"
-           prefWidth="388.0" text="Please add at least one product!" textFill="RED" visible="false">
+    <Label fx:id="noProductAddedErrorMessage" alignment="CENTER" layoutX="579.0" layoutY="653.0" prefHeight="31.0"
+           prefWidth="304.0" text="Please add at least one product!" textFill="RED" visible="false">
         <font>
             <Font name="Segoe UI" size="18.0"/>
         </font>
     </Label>
+    <Button fx:id="importProductsButton" layoutX="442.0" layoutY="653.0" mnemonicParsing="false"
+            onMouseClicked="#clickImportProductsButton" prefHeight="31.0" prefWidth="130.0"
+            style="-fx-background-color: #adc095;" text="Import products" wrapText="true">
+        <font>
+            <Font name="Segoe UI" size="15.0"/>
+        </font>
+    </Button>
 </AnchorPane>

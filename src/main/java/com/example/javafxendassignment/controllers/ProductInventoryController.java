@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -38,6 +39,8 @@ public class ProductInventoryController {
     public Label noProductSelectedErrorMessage;
     @FXML
     public Label noProductAddedErrorMessage;
+    @FXML
+    public Button importProductsButton;
 
     private final int appWidth = 600;
     private final int appHeight = 272;
@@ -77,6 +80,12 @@ public class ProductInventoryController {
         } else {
             showMessage(noProductSelectedErrorMessage);
         }
+        refreshProductsTableView();
+    }
+
+    @FXML
+    public void clickImportProductsButton(MouseEvent mouseEvent) {
+        productInventoryService.importProducts();
         refreshProductsTableView();
     }
 
@@ -135,14 +144,6 @@ public class ProductInventoryController {
         if (productsTableView.getItems().isEmpty()) {
             showMessage(noProductAddedErrorMessage);
         }
-    }
-
-    private boolean isProductSelected() {
-        if (productsTableView.getSelectionModel().getSelectedItem() == null) {
-            showMessage(noProductSelectedErrorMessage);
-            return false;
-        }
-        return true;
     }
 
     public void refreshProductsTableView() {
