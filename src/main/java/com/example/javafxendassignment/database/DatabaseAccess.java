@@ -21,14 +21,6 @@ public class DatabaseAccess implements Serializable {
         this.products = new ArrayList<>();
         this.orders = new ArrayList<>();
         this.orderListProducts = new ArrayList<>();
-
-//        addUsers();
-    }
-
-    // not removed for testing purposes
-    private void addUsers() {
-        users.add(new User("John", "Collins", "johncollins", "$2a$10$49gs2G5NEksir.mVxmhk3O0ui42a3ov5IdrLabChPuzQBa1NmPD7W", Role.Sales));
-        users.add(new User("Tony", "Wolf", "tonywolf", "$2a$10$/ki72FtNRnPLvjf2xMudz.HMMHYsLb83S.OImvNWTychrhJk.Rtjm", Role.Manager));
     }
 
     public List<User> getUsers() {
@@ -129,4 +121,20 @@ public class DatabaseAccess implements Serializable {
         }
         return filteredProducts;
     }
+
+    public void addProductFromImport(String name, String category, double price, String description, int stock) {
+        boolean productExists = false;
+
+        for (Product product : products) {
+            if (product.getName().equals(name)) {
+                product.setStock(product.getStock() + stock);
+                productExists = true;
+            }
+        }
+
+        if (!productExists) {
+            products.add(new Product(stock, name, category, description, price));
+        }
+    }
+
 }

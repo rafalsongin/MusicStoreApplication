@@ -43,4 +43,29 @@ public class FileService {
         DatabaseSharedModel.setDatabase(database);
         System.out.println("Data loaded successfully");
     }
+
+    public void importProducts(File file) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
+            String line;
+            int lineNumber = 0;
+
+            while ((line = bufferedReader.readLine()) != null) {
+                lineNumber++;
+
+                if (lineNumber > 1) {
+                    String[] productData = line.split(";");
+                    String name = productData[0];
+                    String category = productData[1];
+                    String price = productData[2];
+                    String description = productData[3];
+                    String stock = productData[4];
+
+                    ProductInventoryService productInventoryService = new ProductInventoryService();
+                    productInventoryService.addProduct(name, category, price, description, stock);
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Error importing products: " + e.getMessage());
+        }
+    }
 }

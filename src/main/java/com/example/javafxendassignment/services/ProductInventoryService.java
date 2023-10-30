@@ -41,14 +41,10 @@ public class ProductInventoryService {
         File file = chooseCsvFileToImport();
 
         if (file != null) {
-//            fileService.importProducts(file);
-            System.out.println("File selected: " + file.getName());
-
+            fileService.importProducts(file);
         } else {
             System.out.println("No file selected");
         }
-
-
     }
 
     private File chooseCsvFileToImport() {
@@ -59,5 +55,12 @@ public class ProductInventoryService {
         fileChooser.setInitialDirectory(new java.io.File("."));
 
         return fileChooser.showOpenDialog(null);
+    }
+
+    public void addProduct(String name, String category, String price, String description, String stock) {
+        double priceDouble = Double.parseDouble(price);
+        int stockInt = Integer.parseInt(stock);
+
+        database.addProductFromImport(name, category, priceDouble, description, stockInt);
     }
 }
