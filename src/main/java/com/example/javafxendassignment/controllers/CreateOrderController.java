@@ -1,6 +1,6 @@
 package com.example.javafxendassignment.controllers;
 
-import com.example.javafxendassignment.Application;
+import com.example.javafxendassignment.MusicShopApplication;
 import com.example.javafxendassignment.model.Order;
 import com.example.javafxendassignment.model.OrderListProduct;
 import com.example.javafxendassignment.services.CreateOrderService;
@@ -8,7 +8,13 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -55,6 +61,12 @@ public class CreateOrderController {
     public Label noProductAddedErrorMessage;
 
     private CreateOrderService createOrderService;
+
+    private static Alert getAlert() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Do you want to confirm this order?", ButtonType.YES, ButtonType.NO);
+        alert.showAndWait();
+        return alert;
+    }
 
     public void initialize() {
         createOrderService = new CreateOrderService();
@@ -106,12 +118,6 @@ public class CreateOrderController {
         }
     }
 
-    private static Alert getAlert() {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Do you want to confirm this order?", ButtonType.YES, ButtonType.NO);
-        alert.showAndWait();
-        return alert;
-    }
-
     private void clearInput() {
         createOrderService.deleteAllOrderListProducts();
         firstNameTextField.clear();
@@ -128,7 +134,7 @@ public class CreateOrderController {
             showMessage(notAllFieldsFilledErrorMessage);
         } else if (!emailAddressTextField.getText().contains("@") || !emailAddressTextField.getText().contains(".")) {
             showMessage(emailInputNotValidErrorMessage);
-        } else if (!phoneNumberTextField.getText().matches("[0-9]+") || phoneNumberTextField.getText().length() != 10 ||
+        } else if (!phoneNumberTextField.getText().matches("/d+") || phoneNumberTextField.getText().length() != 10 ||
                 !phoneNumberTextField.getText().startsWith("06")) {
             showMessage(phoneNumberNotValidErrorMessage);
         } else {
@@ -149,7 +155,7 @@ public class CreateOrderController {
 
     // load add-product-order-view.fxml
     private Scene getSceneLoaded() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("add-product-order-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(MusicShopApplication.class.getResource("add-product-order-view.fxml"));
         int appWidth = 800;
         int appHeight = 400;
         Scene scene = new Scene(fxmlLoader.load(), appWidth, appHeight);

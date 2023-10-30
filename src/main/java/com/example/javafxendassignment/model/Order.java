@@ -11,9 +11,9 @@ public class Order implements Serializable {
 
     private final int id;
     private final String dateOfOrder;
+    private final List<OrderListProduct> orderedProducts;
     private String name;
     private double totalPrice;
-    private final List<OrderListProduct> orderedProducts;
     private String customerFirstName;
     private String customerLastName;
     private String customerEmail;

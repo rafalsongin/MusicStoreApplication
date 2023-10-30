@@ -1,6 +1,6 @@
 package com.example.javafxendassignment.controllers;
 
-import com.example.javafxendassignment.Application;
+import com.example.javafxendassignment.MusicShopApplication;
 import com.example.javafxendassignment.model.ContentPaneSwitcher;
 import com.example.javafxendassignment.model.Role;
 import com.example.javafxendassignment.model.User;
@@ -36,6 +36,50 @@ public class MainWindowController {
     public AnchorPane contentPane;
 
     private ContentPaneSwitcher contentPaneSwitcher;
+
+    private static Alert getCloseAlert() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Do you want to close the application?", ButtonType.YES, ButtonType.NO);
+        alert.showAndWait();
+        return alert;
+    }
+
+    private static Alert getLogoutAlert() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Do you want to logout of the current profile?", ButtonType.YES, ButtonType.NO);
+        alert.showAndWait();
+        return alert;
+    }
+
+    private static void openLoginWindow() throws IOException {
+        // open login-view.fxml and close main-window-view.fxml
+        FXMLLoader loginLoader = new FXMLLoader(MusicShopApplication.class.getResource("login-view.fxml"));
+
+        int appWidth = 440;
+        int appHeight = 340;
+
+        // Set the login scene
+        Scene loginScene = new Scene(loginLoader.load(), appWidth, appHeight);
+
+        Stage primaryStage = new Stage();
+        primaryStage.setScene(loginScene);
+        primaryStage.setTitle("Login");
+        primaryStage.show();
+
+        LoginController controller = loginLoader.getController();
+        controller.initialize();
+    }
+
+    private static void setOnCloseWindowRequest(MouseEvent mouseEvent, Stage stage) {
+        FileService fileService = new FileService();
+        stage.setOnCloseRequest((WindowEvent event) -> {
+            Alert alert = getCloseAlert();
+            if (alert.getResult() == ButtonType.YES) {
+                ((Node) (mouseEvent.getSource())).getScene().getWindow().hide();
+                fileService.saveDatabase();
+            } else {
+                alert.close();
+            }
+        });
+    }
 
     public void initialize() {
         this.contentPaneSwitcher = new ContentPaneSwitcher();
@@ -84,37 +128,6 @@ public class MainWindowController {
         }
     }
 
-    private static Alert getCloseAlert() {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Do you want to close the application?", ButtonType.YES, ButtonType.NO);
-        alert.showAndWait();
-        return alert;
-    }
-
-    private static Alert getLogoutAlert() {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Do you want to logout of the current profile?", ButtonType.YES, ButtonType.NO);
-        alert.showAndWait();
-        return alert;
-    }
-
-    private static void openLoginWindow() throws IOException {
-        // open login-view.fxml and close main-window-view.fxml
-        FXMLLoader loginLoader = new FXMLLoader(Application.class.getResource("login-view.fxml"));
-
-        int appWidth = 440;
-        int appHeight = 340;
-
-        // Set the login scene
-        Scene loginScene = new Scene(loginLoader.load(), appWidth, appHeight);
-
-        Stage primaryStage = new Stage();
-        primaryStage.setScene(loginScene);
-        primaryStage.setTitle("Login");
-        primaryStage.show();
-
-        LoginController controller = loginLoader.getController();
-        controller.initialize();
-    }
-
     private void setMenuButtonsAccess(User currentUser) {
         if (currentUser != null) {
             if (currentUser.getRole().equals(Role.Sales)) {
@@ -126,7 +139,7 @@ public class MainWindowController {
     }
 
     public void initializeMainWindow(MouseEvent mouseEvent) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("main-window-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(MusicShopApplication.class.getResource("main-window-view.fxml"));
         int appWidth = 1120;
         int appHeight = 700;
         Scene scene = new Scene(fxmlLoader.load(), appWidth, appHeight);
@@ -137,26 +150,13 @@ public class MainWindowController {
         contentPane = (AnchorPane) scene.lookup("#contentPane");
 
         // load dashboard content
-        FXMLLoader fxmlContentLoader = new FXMLLoader(Application.class.getResource("dashboard-view.fxml"));
+        FXMLLoader fxmlContentLoader = new FXMLLoader(MusicShopApplication.class.getResource("dashboard-view.fxml"));
         AnchorPane content = fxmlContentLoader.load();
         contentPane.getChildren().add(content);
 
         // set close window request
         setOnCloseWindowRequest(mouseEvent, stage);
         closeWindow(mouseEvent);
-    }
-
-    private static void setOnCloseWindowRequest(MouseEvent mouseEvent, Stage stage) {
-        FileService fileService = new FileService();
-        stage.setOnCloseRequest((WindowEvent event) -> {
-            Alert alert = getCloseAlert();
-            if (alert.getResult() == ButtonType.YES) {
-                ((Node) (mouseEvent.getSource())).getScene().getWindow().hide();
-                fileService.saveDatabase();
-            } else {
-                alert.close();
-            }
-        });
     }
 
     private void setButtonActiveColor(Button button) {

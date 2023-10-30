@@ -1,6 +1,6 @@
 package com.example.javafxendassignment.model;
 
-import com.example.javafxendassignment.Application;
+import com.example.javafxendassignment.MusicShopApplication;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.AnchorPane;
@@ -16,7 +16,7 @@ public class ContentPaneSwitcher {
             contentPane.getChildren().clear();
 
             // load new content
-            FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource(filename));
+            FXMLLoader fxmlLoader = new FXMLLoader(MusicShopApplication.class.getResource(filename));
             AnchorPane content = fxmlLoader.load();
             contentPane.getChildren().add(content);
         } catch (Exception e) {

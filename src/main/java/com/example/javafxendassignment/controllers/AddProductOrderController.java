@@ -5,7 +5,11 @@ import com.example.javafxendassignment.model.Product;
 import com.example.javafxendassignment.services.AddProductOrderService;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 
 import java.util.List;
@@ -44,6 +48,15 @@ public class AddProductOrderController {
 
     private AddProductOrderService addProductOrderService;
     private CreateOrderController createOrderController;
+
+    private static OrderListProduct getOrderListProduct(int quantity, Product selectedProduct) {
+        return new OrderListProduct(
+                quantity,
+                selectedProduct.getName(),
+                selectedProduct.getCategory(),
+                selectedProduct.getPrice()
+        );
+    }
 
     public void initialize(CreateOrderController createOrderController) {
         addProductOrderService = new AddProductOrderService();
@@ -122,15 +135,6 @@ public class AddProductOrderController {
             showMessage(noProductSelectedErrorMessage);
         }
         return false;
-    }
-
-    private static OrderListProduct getOrderListProduct(int quantity, Product selectedProduct) {
-        return new OrderListProduct(
-                quantity,
-                selectedProduct.getName(),
-                selectedProduct.getCategory(),
-                selectedProduct.getPrice()
-        );
     }
 
     private void showMessage(Label label) {

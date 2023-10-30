@@ -1,6 +1,6 @@
 package com.example.javafxendassignment.controllers;
 
-import com.example.javafxendassignment.Application;
+import com.example.javafxendassignment.MusicShopApplication;
 import com.example.javafxendassignment.model.Product;
 import com.example.javafxendassignment.services.ProductInventoryService;
 import javafx.fxml.FXML;
@@ -17,6 +17,8 @@ import java.io.IOException;
 import java.util.List;
 
 public class ProductInventoryController {
+    private static final int APP_WIDTH = 600;
+    private static final int APP_HEIGHT = 272;
     @FXML
     public Button addProductButton;
     @FXML
@@ -41,10 +43,6 @@ public class ProductInventoryController {
     public Label noProductAddedErrorMessage;
     @FXML
     public Button importProductsButton;
-
-    private final int appWidth = 600;
-    private final int appHeight = 272;
-
     private ProductInventoryService productInventoryService;
 
     @FXML
@@ -120,8 +118,8 @@ public class ProductInventoryController {
 
     // load add-product-inventory-view.fxml
     private Scene getSceneLoaded() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("add-product-inventory-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), appWidth, appHeight);
+        FXMLLoader fxmlLoader = new FXMLLoader(MusicShopApplication.class.getResource("add-product-inventory-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), APP_WIDTH, APP_HEIGHT);
 
         AddProductInventoryController addProductInventoryController = fxmlLoader.getController();
         addProductInventoryController.initialize(this);
@@ -131,8 +129,8 @@ public class ProductInventoryController {
 
     // load edit-product-inventory-view.fxml
     private Scene getSceneLoaded(Product product) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("edit-product-inventory-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), appWidth, appHeight);
+        FXMLLoader fxmlLoader = new FXMLLoader(MusicShopApplication.class.getResource("edit-product-inventory-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), APP_WIDTH, APP_HEIGHT);
 
         EditProductController editProductController = fxmlLoader.getController();
         editProductController.initialize(this, product);

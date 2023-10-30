@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class LoginController {
+    private final LoginService loginService;
     @FXML
     public TextField usernameField;
     @FXML
@@ -26,8 +27,6 @@ public class LoginController {
     public Label passwordInputIncorrectInput;
     @FXML
     public Label passwordInfoMessage;
-
-    private final LoginService loginService;
     private int incorrectInputCount;
 
     public LoginController() {

@@ -1,6 +1,9 @@
 package com.example.javafxendassignment.database;
 
-import com.example.javafxendassignment.model.*;
+import com.example.javafxendassignment.model.Order;
+import com.example.javafxendassignment.model.OrderListProduct;
+import com.example.javafxendassignment.model.Product;
+import com.example.javafxendassignment.model.User;
 
 import java.io.Serial;
 import java.io.Serializable;

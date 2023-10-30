@@ -3,20 +3,28 @@ package com.example.javafxendassignment.services;
 import com.example.javafxendassignment.database.DatabaseAccess;
 import com.example.javafxendassignment.model.DatabaseSharedModel;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 public class FileService {
-    private final String filepath = "database.dat";
+    private static final String FILE_PATH = "database.dat";
 
     public void saveDatabase() {
         DatabaseAccess database = DatabaseSharedModel.getDatabase();
 
-        try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(filepath))) {
+        try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(FILE_PATH))) {
 
             objectOutputStream.writeObject(database);
 
         } catch (FileNotFoundException fnfe) {
-            System.out.println("File not found: " + filepath);
+            System.out.println("File not found: " + FILE_PATH);
         } catch (IOException ioe) {
             System.out.println("IO Exception: " + ioe.getMessage());
         } catch (Exception e) {
@@ -29,12 +37,12 @@ public class FileService {
         // loads default database if file loading fails
         DatabaseAccess database = new DatabaseAccess();
 
-        File file = new File(filepath);
+        File file = new File(FILE_PATH);
         if (!file.exists()) {
             throw new FileNotFoundException("File not found");
         }
 
-        try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(filepath))) {
+        try (ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(FILE_PATH))) {
             database = (DatabaseAccess) objectInputStream.readObject();
         } catch (IOException | ClassNotFoundException e) {
             System.out.println("Error loading data: " + e.getMessage());

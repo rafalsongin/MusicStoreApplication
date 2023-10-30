@@ -8,11 +8,15 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class Application extends javafx.application.Application {
+public class MusicShopApplication extends javafx.application.Application {
+    public static void main(String[] args) {
+        launch();
+    }
+
     @Override
     public void start(Stage primaryStage) throws IOException {
         // Load the login view
-        FXMLLoader loginLoader = new FXMLLoader(Application.class.getResource("login-view.fxml"));
+        FXMLLoader loginLoader = new FXMLLoader(MusicShopApplication.class.getResource("login-view.fxml"));
 
         int appWidth = 440;
         int appHeight = 340;
@@ -28,10 +32,6 @@ public class Application extends javafx.application.Application {
 
         LoginController controller = loginLoader.getController();
         controller.initialize();
-    }
-
-    public static void main(String[] args) {
-        launch();
     }
 }
 
