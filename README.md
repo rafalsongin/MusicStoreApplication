@@ -1,4 +1,4 @@
-# Java Fundamentals End assignment
+# Music Store Application
 
 ### Description
 
